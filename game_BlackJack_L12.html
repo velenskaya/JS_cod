@@ -1,0 +1,63 @@
+﻿<meta charset="utf-8">
+<script>
+function getRandomInt(min,max) {
+return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+function getCard() {
+var cards = ['6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
+return cards[getRandomInt(0, cards.length - 1)];
+}
+function getSum(hand) {
+var sum = 0;
+for (var i=0; i<hand.length; i++) {
+var card = hand[i];
+if (card != 'A') {
+if (card == 'J' || card == 'Q' || card == 'K') {
+sum = sum + 10;
+}else{
+sum = sum + parseInt(card);
+}
+}
+}
+for ( var i=0; i<hand.length; i++) {
+var card = hand[i];
+if (card == 'A') {
+if (sum > 10) {
+sum = sum + 1;
+        }else{
+            sum = sum + 11;
+        }
+    }
+}
+return sum;
+}
+function getStatus() {
+return ' Дилер: ' + dealer.join(' ') + ' Игрок: ' + player.join(' ') + '.';
+}
+var dealer = [getCard()];
+var player = [getCard(), getCard()];
+var answer = '';
+do {
+answer = prompt (getStatus() + ' Хотите еще одну карту ? 1 - да, иначе - нет');
+if (answer == '1') {
+player.push(getCard());
+}
+alert(getStatus());
+if(getSum(player) == 21) {
+alert(" Дилер очков: " + getSum(dealer) + ' Игрок очков: ' + getSum(player) +' ');
+alert("ПОБЕДА!");
+break;
+} 
+if(getSum(player) > 21) {
+alert(" Дилер очков: " + getSum(dealer) + ' Игрок очков: ' + getSum(player) +' ');
+alert("ТЫ ПРОИГРАЛ!");
+break;
+} else {
+alert(" Дилер очков: " + getSum(dealer) + ' Игрок очков: ' + getSum(player) +' ');
+alert("Игра будет продолжена...");
+}
+
+} while(answer == '1');
+
+</script>
+

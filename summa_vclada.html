@@ -1,0 +1,25 @@
+<meta charset = "utf-8">
+<script>
+ var s = parseInt(prompt("введите сумму вклада:"));
+ var inter = parseInt(prompt("введите ставку процента:"));
+ var sr = parseInt(prompt("срок депозита:"));
+ 
+ 
+for ( var i = 1; i <= sr; i++) { 
+  var S = s * inter/100;
+  s = S+s;
+  alert("сумма вклада на" + i + "году составила:" + Math.floor(s))
+  };
+</script>
+
+<script>
+
+ var money = parseInt(prompt("введите сумму вклада:"));
+ var interest = parseInt(prompt("введите ставку процента:"));
+ var years = parseInt(prompt("срок депозита:"));
+  
+for ( var i = 1; i<= years; i++) { 
+  money = money + money * interest / 100;
+  alert("сумма вклада на" + i + "году составила:" + Math.floor(money));
+}
+</script>
